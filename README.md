@@ -1,5 +1,5 @@
 Welcome to a small cat card game I made in a week as a self-imposed game jam!
-The game can be accessed at: [url]
+The game can be accessed at: [here](https://cassa-sys.github.io/CatCardGame/)
 ## Project Setup
 
 ```sh
