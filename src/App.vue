@@ -1,20 +1,43 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import {ref} from 'vue'
+import { Player } from './code/Player';
+import CardObj from './code/components/CardObj.vue';
+import { Deck } from './code/Deck.ts';
+import ViewDeck from './code/components/ViewDeck.vue';
+import { textSpanIsEmpty } from 'typescript';
+import { Enemy } from './code/Enemy.ts';
+import Bar from './code/components/Bar.vue';
+import Name from './code/components/Name.vue';
+import GameBoard from './code/components/GameBoard.vue';
+import { tab, swapTab } from './code/helper/swapTab.ts';
+import CardReward from './code/components/CardReward.vue';
+
+Deck.init()
+Deck.drawNewHand();
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <GameBoard v-if="tab == 1"/>
+  <ViewDeck :deck="Deck.undrawnCards" style="display: disabled;" v-if="tab == 2"/>
+  <ViewDeck :deck="Deck.discarded" style="display: disabled;" v-if="tab == 3"/>
+  <CardReward v-if="tab == 4"></CardReward>
+  <!-- Deck -->
+  <div class="bottom">
+    <button id="notDrawn" @click="swapTab(2)">
+      {{Deck.undrawnCards.length}}
+      <br/>
+      See Deck
+    </button>
+    <div id="hand">
+      <CardObj v-for="(card, index) in Deck.hand" :card="card" :position-in-hand="index" :cards-in-hand="Deck.hand.length"></CardObj>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <button id="discarded" @click="swapTab(3)">
+      {{ Deck.discarded.length }}
+      <br/>
+      See Discarded
+    </button>
+  </div>
+  <button v-if="tab !== 1 && tab !== 4" @click="swapTab(1)">Go Back</button>
 </template>
 
 <style scoped>
@@ -22,26 +45,40 @@ header {
   line-height: 1.5;
 }
 
+.gameZone {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  min-height: 80vh;
+  background-color: #282a36;
+}
+
+.bottom {
+  min-width: 100%;
+  width:100%;
+  min-height: 10vh;
+  /* background-color: yellow; */
+  display: flex;
+}
+
+.bottom * {
+  /* position: relative; */
+  height: 10vh;
+  width: 100%;
+  padding: 0;
+}
+#hand {
+  min-width: 80%;
+  display: flex;
+  justify-content: center;
+}
+#hand * {
+  width: auto;
+}
 .logo {
   display: block;
   margin: 0 auto 2rem;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
