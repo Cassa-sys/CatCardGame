@@ -47,7 +47,7 @@ function nextTurn() {
         <h1> Energy: {{ Player.energy }}</h1>
 
 
-        <button @click="Deck.drawNewHand()"></button>
+        <!-- <button @click="Deck.drawNewHand()"></button> -->
 
         <div style="display: flex">
             <div v-for="status in playerStatus">
