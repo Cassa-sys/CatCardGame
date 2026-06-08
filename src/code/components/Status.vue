@@ -40,23 +40,24 @@ const hideElement = () => {
         border: 1px solid black;
         margin: 1px;
         user-select: none;
+        font-size: large;
     }
     .hoverable {
-    position: fixed;
-    top: 0;
-    left: 0;
-    /* Disable interaction so it doesn't block mouse movements */
-    pointer-events: none; 
-    z-index: 9999;
-    
-    /* Offset it slightly so it doesn't cover the exact pointer */
-    margin-top: 15px;
-    margin-left: 15px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      /* Disable interaction so it doesn't block mouse movements */
+      pointer-events: none; 
+      z-index: 9999;
+      
+      /* Offset it slightly so it doesn't cover the exact pointer */
+      margin-top: 15px;
+      margin-left: 15px;
 
-    /* Basic styling */
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
+      /* Basic styling */
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
     }
 </style>

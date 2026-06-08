@@ -67,7 +67,7 @@ export var Enemy = reactive({
     maxHealth: 25,
     name: generateEnemyName(),
     damage: 10,
-    moveset: movesets[1] as move[],
+    moveset: movesets[0] as move[],
     currentMove: 0,
 
     constructor(health: number, damage: number) {

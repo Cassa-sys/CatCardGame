@@ -32,7 +32,7 @@ export class Status {
 
 
 export var playerStatus = reactive({
-    "strength": new Status("Strength", "With the power of a thousand pats, your pats raise the cats annoyance faster! Cards deal +1 per stack!", 1, () => {/* Implemented Elsewhere*/}),
+    "strength": new Status("Strength", "With the power of a thousand pats, your pats raise the cats annoyance faster! Cards deal +1 per stack!", 0, () => {/* Implemented Elsewhere*/}),
     "poison": new Status("Ew... Hair Ball!", "The cat decided to wake up and choose violence! \n Deals annoyance damage by #Stacks at end of your turn. Then decreases by 1.", 0, () => {Player.changeHealth(-playerStatus["poison"].amount);}),
 })
 
