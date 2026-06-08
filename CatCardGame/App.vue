@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import { Player } from './code/Player';
+import { Player } from './code/Player.ts';
 import CardObj from './code/components/CardObj.vue';
 import { Deck } from './code/Deck.ts';
 import ViewDeck from './code/components/ViewDeck.vue';
