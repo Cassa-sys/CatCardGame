@@ -85,7 +85,7 @@ export var Enemy = reactive({
 
 
     changeHealth(amount: number) {
-        if (Math.abs(amount) > this.health && amount <= 0) {
+        if (Math.abs(amount) >= this.health && amount <= 0) {
             this.onDeath()
             return;
         } else {
@@ -94,7 +94,7 @@ export var Enemy = reactive({
     },
 
     onDeath() {
-        this.generateNewEnemy((this.health + 25), this.damage * 1.2, PickRandomFromArray(movesets));
+        this.generateNewEnemy((this.maxHealth + 15), this.damage * 1.2, PickRandomFromArray(movesets));
         Player.score += this.health;
 
         for (const key of Object.keys(playerStatus) as (keyof typeof playerStatus)[]) {
@@ -106,7 +106,8 @@ export var Enemy = reactive({
         Player.energy = 3;
         Player.block = 0;
 
-        Deck.drawNewHand();
+        Deck.hand = [];
+
         // Generate new Card
         swapTab(4);
     }

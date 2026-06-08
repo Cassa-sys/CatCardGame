@@ -29,11 +29,14 @@ function addCard(index: number) {
     Deck.addNewCard(cardRewards[index]!);
     generateNewCards();
     swapTab(1);
+
+    Deck.drawNewHand();
 }
 
 function rest() {
     Player.health = Player.maxHealth;
     swapTab(1);
+    Deck.drawNewHand();
 }
 
 </script>

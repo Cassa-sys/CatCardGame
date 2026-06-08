@@ -16,7 +16,10 @@ Deck.init()
 Deck.drawNewHand();
 </script>
 
-<template>
+<template> 
+<div style='color: white; background-color: black;'>
+
+</div>
   <GameBoard v-if="tab == 1"/>
   <ViewDeck :deck="Deck.undrawnCards" style="display: disabled;" v-if="tab == 2"/>
   <ViewDeck :deck="Deck.discarded" style="display: disabled;" v-if="tab == 3"/>

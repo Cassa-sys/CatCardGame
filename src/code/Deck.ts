@@ -18,7 +18,7 @@ export var Deck = reactive({
         this.addNewCard(Cards[2]!);
         this.addNewCard(Cards[2]!);
 
-        this.undrawnCards = this.deckCards;
+        this.undrawnCards = [...this.deckCards];
     },
 
     drawCard() {
@@ -26,7 +26,7 @@ export var Deck = reactive({
             return;
         }
         if (this.undrawnCards.length == 0) {
-            this.undrawnCards = this.discarded;
+            this.undrawnCards = [...this.discarded];
             this.discarded = [];
         }
 
@@ -34,7 +34,6 @@ export var Deck = reactive({
         const card = this.undrawnCards[i];
         if (card) {
             this.hand.push(card);
-
             this.undrawnCards.splice(i, 1);
         }
 
@@ -57,16 +56,15 @@ export var Deck = reactive({
     },
 
     drawNewHand() {
-        this.hand.forEach((card) => {
-            this.discarded.push(card)
-        })
+        this.hand = [];
         this.discarded = [];
-        this.undrawnCards = this.deckCards;
+        this.undrawnCards = [...this.deckCards];
         for (let index = 0; index < Player.defaultHandSize; index++) {
             this.drawCard();
         }
 
-        this.undrawnCards = this.deckCards;
+        console.log(this.hand)
+
     },
 
     drawHandTurn() {

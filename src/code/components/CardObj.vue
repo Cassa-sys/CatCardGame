@@ -34,7 +34,7 @@ const props = defineProps({
 }
 .card:hover {
     z-index: 1;
-    transform: scale(1.5)
+    transform: scale(1.3)
 }
 
 .card * {

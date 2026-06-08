@@ -45,11 +45,18 @@ function nextTurn() {
         <Bar :color="'Red'" :value="Player.health" :max-value="Player.maxHealth"></Bar>
         <Bar :color="'Blue'" :value="Player.block" :max-value="Player.maxHealth"></Bar>
         <h1> Energy: {{ Player.energy }}</h1>
+        {{ Deck.undrawnCards }}
+        <br/>
+        {{ Deck.deckCards }}
+
+        <button @click="Deck.drawNewHand()"></button>
+
         <div style="display: flex">
             <div v-for="status in playerStatus">
                 <Status :status="status"></Status>
             </div>
         </div>
+
 
         
         </div>
